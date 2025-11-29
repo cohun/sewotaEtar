@@ -1,0 +1,82 @@
+
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETAR Rendszer - Excel Adatolvasás</title>
+    <link rel="icon" type="image/png" href="images/ETAR_H.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Common Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- SheetJS/xlsx library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e3a8a, #000033);
+        }
+        .card {
+            background-color: rgba(3, 7, 18, 0.6); /* bg-blue-950/60 */
+            border: 1px solid #1e40af; /* border-blue-800 */
+            color: #d1d5db; /* text-gray-300 */
+        }
+        #excelDataTable th, #excelDataTable td {
+            border: 1px solid #4b5563;
+            padding: 8px;
+            text-align: left;
+        }
+        #excelDataTable th {
+            background-color: #1f2937;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="container mx-auto max-w-7xl">
+        <div class="text-center mb-4">
+            <img src="images/logo.jpg" alt="Logo" class="mx-auto h-16 rounded-lg">
+        </div>
+        <header class="bg-blue-950 p-4 rounded-t-xl mb-1 shadow-lg border-b border-blue-800 flex items-center justify-between">
+            <img src="images/ETAR_H.png" alt="ETAR Logo" class="h-10">
+            <h2 class="text-xl font-bold text-white">Excel Adatolvasás</h2>
+            <div class="w-10"></div>
+        </header>
+        <div class="card rounded-t-none p-8">
+            <h3 class="text-2xl font-semibold mb-6 text-center">Excel fájl beolvasása és megjelenítése</h3>
+            
+            <div class="flex flex-col items-center justify-center space-y-4 mb-8">
+                <input type="file" id="excelFile" accept=".xlsx, .xls" class="file-input file-input-bordered file-input-primary w-full max-w-xs bg-gray-800 text-white" />
+                <button id="uploadButton" class="btn btn-primary">Feldolgozás</button>
+            </div>
+
+            <div id="excelData" class="overflow-x-auto">
+                <!-- Az Excel adatok itt jelennek meg táblázatként -->
+            </div>
+            
+            <div class="flex justify-center mt-8 space-x-4">
+                <button onclick="history.back()" class="btn btn-secondary">Vissza</button>
+                <button id="saveButton" class="btn btn-success hidden">Mentés az adatbázisba</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
+
+    <!-- App Scripts -->
+    <script type="module" src="js/excel_import.js"></script>
+
+</body>
+</html>
